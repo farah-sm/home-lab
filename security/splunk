@@ -1,0 +1,10 @@
+# SPLUNK
+
+#Running: sudo docker pull splunk/universalforwarder
+# as per the documentation, we get the error:
+# Using default tag: latest
+# latest: Pulling from splunk/universalforwarder
+# no matching manifest for linux/arm64/v8 in the manifest list entries
+
+# Instead, I ran:
+docker pull --platform linux/amd64 splunk/splunk
