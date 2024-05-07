@@ -7,4 +7,10 @@
 # no matching manifest for linux/arm64/v8 in the manifest list entries
 
 # Instead, I ran:
-docker pull --platform linux/amd64 splunk/splunk
+docker pull splunk/splunk
+
+docker run -d -p 8888:8000 -p 9997:997 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=test123!" --name splunk splunk/splunk:latest --hostname splunk-enterprise
+
+--------- 
+
+UF: https://www.youtube.com/watch?v=oZu23eDpTn8&list=PLSr58-DJdRyYGj8_3NYiFSvDXXyU4fW27&index=5
