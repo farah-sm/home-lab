@@ -7,10 +7,17 @@
 # no matching manifest for linux/arm64/v8 in the manifest list entries
 
 # Instead, I ran:
-docker pull splunk/splunk
+docker version
 
-docker run -d -p 8888:8000 -p 9997:997 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=test123!" --name splunk splunk/splunk:latest --hostname splunk-enterprise
+docker network create --driver bridge --attachable skynet
 
---------- 
+docker network rm skynet
 
-UF: https://www.youtube.com/watch?v=oZu23eDpTn8&list=PLSr58-DJdRyYGj8_3NYiFSvDXXyU4fW27&index=5
+docker rm --force so1
+
+docker container ls
+
+docker run --network skynet --name so1 --hostname so1 -p 8001:8000 -e "SPLUNK_PASSWORD=sidh1234" -e "SPLUNK_START_ARGS=--accept-license" -it splunk/splunk:latest
+
+
+docker run --network skynet --name uf1 --hostname uf1 -e "SPLUNK_PASSWORD=sidh1234" -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_STANDALONE_URL=so1" -it splunk/universalforwarder:latest
