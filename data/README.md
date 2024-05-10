@@ -61,16 +61,16 @@ This README provides step-by-step instructions for building Kafka broker and Zoo
     Note down the IP address under the "IP" column. You will use this IP address to configure the parameters of the server.properties and Dockerfile of the Kafka broker image.
 
 
-------- back to docker image creation -------
+------- Back to docker image creation (quick) -------
 *****. Update Kafka Dockerfile and server.properties:
 
-    - Navigate to the Kafka Dockerfile:
+ Navigate to the Kafka Dockerfile:
 
         ```bash
         vi home-lab/data/kafka/Dockerfile
         ```
 
-    - Update the following environment variables with Zookeeper service IP:
+ Update the following environment variables with Zookeeper service IP:
 
         ```bash
         ENV ZOOKEEPER_1_PORT_2181_TCP_ADDR XX.XX.XXX.XXX
@@ -79,13 +79,13 @@ This README provides step-by-step instructions for building Kafka broker and Zoo
         ENV ZOOKEEPER_1_PORT tcp://XX.XX.XXX.XXX:2181
         ```
 
-    - Navigate to the Kafka server.properties file:
+ Navigate to the Kafka server.properties file:
 
         ```bash
         vi home-lab/data/kafka/server.properties
         ```
 
-    - Update `zookeeper.connect` with Zookeeper service IP:
+ Update `zookeeper.connect` with Zookeeper service IP:
 
         ```
         zookeeper.connect=XX.XX.XXX.XXX:2181
