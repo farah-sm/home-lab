@@ -4,10 +4,12 @@ This README provides step-by-step instructions for building Kafka broker and Zoo
 
 ## Video Series
 
-### Part 1: https://www.youtube.com/watch?v=7AoAQEqLgaU&t=17s
+### Part 1: [![Part 1](https://img.youtube.com/vi/7AoAQEqLgaU/0.jpg)](https://www.youtube.com/watch?v=7AoAQEqLgaU&t=17s)
 
+### Part 2: [![Part 2](https://img.youtube.com/vi/97k5DB1XEYA/0.jpg)](https://www.youtube.com/watch?v=97k5DB1XEYA)
 
-### Part2: https://www.youtube.com/watch?v=97k5DB1XEYA
+## Docker
+
 
 ## Docker
 
