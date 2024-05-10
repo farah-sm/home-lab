@@ -62,7 +62,8 @@ This README provides step-by-step instructions for building Kafka broker and Zoo
 
 
 ------- Back to docker image creation (quick) -------
-*****. Update Kafka Dockerfile and server.properties:
+
+Update Kafka Dockerfile and server.properties:
 
  Navigate to the Kafka Dockerfile:
 
