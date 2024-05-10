@@ -67,30 +67,30 @@ Update Kafka Dockerfile and server.properties:
 
  Navigate to the Kafka Dockerfile:
 
-        ```bash
-        vi home-lab/data/kafka/Dockerfile
-        ```
+```bash
+vi home-lab/data/kafka/Dockerfile
+```
 
  Update the following environment variables with Zookeeper service IP:
 
-        ```bash
-        ENV ZOOKEEPER_1_PORT_2181_TCP_ADDR XX.XX.XXX.XXX
-        ENV ZOOKEEPER_1_SERVICE_HOST XX.XX.XXX.XXX
-        ENV ZOOKEEPER_1_PORT_2181_TCP tcp://XX.XX.XXX.XXX:2181
-        ENV ZOOKEEPER_1_PORT tcp://XX.XX.XXX.XXX:2181
-        ```
+```bash
+ENV ZOOKEEPER_1_PORT_2181_TCP_ADDR XX.XX.XXX.XXX
+ENV ZOOKEEPER_1_SERVICE_HOST XX.XX.XXX.XXX
+ENV ZOOKEEPER_1_PORT_2181_TCP tcp://XX.XX.XXX.XXX:2181
+ENV ZOOKEEPER_1_PORT tcp://XX.XX.XXX.XXX:2181
+```
 
  Navigate to the Kafka server.properties file:
 
-        ```bash
-        vi home-lab/data/kafka/server.properties
-        ```
+```bash
+vi home-lab/data/kafka/server.properties
+```
 
  Update `zookeeper.connect` with Zookeeper service IP:
 
-        ```
-        zookeeper.connect=XX.XX.XXX.XXX:2181
-        ```
+```
+zookeeper.connect=XX.XX.XXX.XXX:2181
+```
 
 ### Building Kafka Broker Image and Pushing to Docker Hub
 
