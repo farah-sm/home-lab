@@ -2,6 +2,13 @@
 
 This README provides step-by-step instructions for building Kafka broker and Zookeeper pods, pushing them to Docker Hub, deploying them on Kubernetes, and interacting with Kafka topics within a Kubernetes namespace.
 
+## Video Series
+
+### Part 1: https://www.youtube.com/watch?v=7AoAQEqLgaU&t=17s
+
+
+### Part2: https://www.youtube.com/watch?v=97k5DB1XEYA
+
 ## Docker
 
 ### Building Kafka Broker and Zookeeper Images (assuming you've logged into Docker CLI)
