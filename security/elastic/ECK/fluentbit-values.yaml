@@ -442,8 +442,9 @@ config:
         HTTP_User elastic
         HTTP_Passwd CHANGE_ME
         tls On
-        tls.ca_file      /fluent-bit/tls/tls.crt
-        tls.crt_file     /fluent-bit/tls/tls.crt        tls.verify Off
+        tls.ca_file /fluent-bit/tls/tls.crt
+        tls.crt_file /fluent-bit/tls/tls.crt        
+        tls.verify Off
         Logstash_Format On
         Logstash_Prefix logstash
         Retry_Limit False
@@ -458,8 +459,9 @@ config:
         HTTP_User elastic
         HTTP_Passwd CHANGE_ME
         tls On
-        tls.ca_file      /fluent-bit/tls/tls.crt
-        tls.crt_file     /fluent-bit/tls/tls.crt        tls.verify Off
+        tls.ca_file /fluent-bit/tls/tls.crt
+        tls.crt_file /fluent-bit/tls/tls.crt        
+        tls.verify Off
         Logstash_Format On
         Logstash_Prefix logstash
         Retry_Limit False
