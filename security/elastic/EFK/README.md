@@ -9,10 +9,12 @@ This README provides a guide to setting up the EFK (Elasticsearch, Fluent Bit, K
 * `helm` installed.
 
 Traditionally:
+
 ![elk](https://github.com/user-attachments/assets/2cb0d189-87f0-4d10-ab6a-971a1b22e0fa)
 _____________________
 
 Today's deployment:
+
 ![efk](https://github.com/user-attachments/assets/2344983b-3e89-4b80-b275-966ad2dd851d)
 
 Main Difference:
