@@ -437,12 +437,13 @@ config:
         Name es
         Match kube.*
         Type  _doc
-        Host elasticsearch-master
+        Host  <elasticsearch_service_ip>
         Port 9200
         HTTP_User elastic
         HTTP_Passwd CHANGE_ME
         tls On
-        tls.verify Off
+        tls.ca_file      /fluent-bit/tls/tls.crt
+        tls.crt_file     /fluent-bit/tls/tls.crt        tls.verify Off
         Logstash_Format On
         Logstash_Prefix logstash
         Retry_Limit False
@@ -450,16 +451,17 @@ config:
 
     [OUTPUT]
         Name es
-        Match host.*
+        Match kube.*
         Type  _doc
-        Host elasticsearch-master
+        Host  <elasticsearch_service_ip>
         Port 9200
         HTTP_User elastic
         HTTP_Passwd CHANGE_ME
         tls On
-        tls.verify Off
+        tls.ca_file      /fluent-bit/tls/tls.crt
+        tls.crt_file     /fluent-bit/tls/tls.crt        tls.verify Off
         Logstash_Format On
-        Logstash_Prefix node
+        Logstash_Prefix logstash
         Retry_Limit False
         Suppress_Type_Name On
 
