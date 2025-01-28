@@ -1,0 +1,16 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: quickstart-es
+  namespace: obs-system
+spec:
+  version: 8.17.1 # Use your desired version
+  nodeSets:
+  - name: default
+    count: 1
+    config:
+      node.store.allow_mmap: false # Important for some environments
+  http:
+    service:
+      spec:
+        type: LoadBalancer # Or NodePort if LoadBalancer not available
