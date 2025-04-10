@@ -11,6 +11,26 @@ import (
 
 // GOOS=windows GOARCH=amd64 go build -o windows-scanner.exe main.go
 
+// Confirms n is a regular file and not a directory
+func checkFile(info os.FileInfo, path string  ) {
+if info.Mode().IsRegular() {
+	// fmt.Printf("%s is a regular file\n", info.Name())
+	filer, err := os.Open(path)
+	if err != nil {
+		fmt.Printf("Error: %s. Can't open file %s.", err.Error(), path)
+	}
+	defer filer.Close()
+	scanner := bufio.NewScanner(filer) // NewScanner uses ScanLines func which returns each line of text, stripped of any trailing end-of-line marker.
+	for scanner.Scan() {
+		line := scanner.Text()
+		configFile := "kind: Config"
+		if strings.Contains(line, configFile) {
+			fmt.Printf("Determined to be a Kubeconfig file: %s.\n", path)
+		}
+	}
+}
+}
+
 func main() {
 
 	fileName := flag.String("file", "", "Filename pattern we're looking for, default is kubeconfig")
@@ -28,42 +48,16 @@ func main() {
 		if strings.Contains(info.Name(), *fileName) {
 			fmt.Printf("A file with Kubeconfig in its name: %s \n", path)
 
-			filer, err := os.Open(path)
-			if err != nil {
-				fmt.Printf("Error: %s. Can't open file %s.", err.Error(), path)
-			}
-			defer filer.Close()
-			scanner := bufio.NewScanner(filer) // NewScanner uses ScanLines func which returns each line of text, stripped of any trailing end-of-line marker.
-			for scanner.Scan() {
-				line := scanner.Text()
-				configFile := "Kind: Config"
-				if strings.Contains(line, configFile) {
-					fmt.Printf("Determined to be a Kubeconfig file: %s. This line indicates it: %s\n", path, line)
-				}
-			 }
+			checkFile(info, path)
+
 		} else {
-			// Confirms n is a regular file and not a directory
-			if info.Mode().IsRegular() {
-				// fmt.Printf("%s is a regular file\n", info.Name())
-				filer, err := os.Open(path)
-				if err != nil {
-					fmt.Printf("Error: %s. Can't open file %s.", err.Error(), path)
-				}
-				defer filer.Close()
-			scanner := bufio.NewScanner(filer) // NewScanner uses ScanLines func which returns each line of text, stripped of any trailing end-of-line marker.
-			for scanner.Scan() {
-				line := scanner.Text()
-				configFile := "kind: Config"
-				if strings.Contains(line, configFile) {
-					fmt.Printf("Determined to be a Kubeconfig file: %s.\n", path)
-				}
-			 }
-			 }
+			checkFile(info, path)
+
 		}
 		return nil
 })
     if err != nil {
-        println("Error", err)
+        println("Can't walk the path provided. Error", err.Error())
     }
 
 }
