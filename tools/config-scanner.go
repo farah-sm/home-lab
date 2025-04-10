@@ -11,10 +11,7 @@ import (
 
 // GOOS=windows GOARCH=amd64 go build -o windows-scanner.exe main.go
 
-// Confirms n is a regular file and not a directory
-func checkFile(info os.FileInfo, path string  ) {
-if info.Mode().IsRegular() {
-	// fmt.Printf("%s is a regular file\n", info.Name())
+ func Scan(info os.FileInfo, path string) {
 	filer, err := os.Open(path)
 	if err != nil {
 		fmt.Printf("Error: %s. Can't open file %s.", err.Error(), path)
@@ -28,6 +25,17 @@ if info.Mode().IsRegular() {
 			fmt.Printf("Determined to be a Kubeconfig file: %s.\n", path)
 		}
 	}
+ }
+
+// Confirms n is a regular file and not a directory
+func checkFile(info os.FileInfo, path string  ) {
+if info.Mode().IsRegular() {
+	// fmt.Printf("%s is a regular file\n", info.Name())
+	filer, err := os.Open(path)
+	if err != nil {
+		fmt.Printf("Error: %s. Can't open file %s.", err.Error(), path)
+	}
+	defer filer.Close()
 }
 }
 
@@ -49,10 +57,10 @@ func main() {
 			fmt.Printf("A file with Kubeconfig in its name: %s \n", path)
 
 			checkFile(info, path)
-
+			Scan(info, path)
 		} else {
 			checkFile(info, path)
-
+			Scan(info, path)
 		}
 		return nil
 })
