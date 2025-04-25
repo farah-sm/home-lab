@@ -1,1 +1,14 @@
-
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: quickstart-kb
+  namespace: observer
+spec:
+  version: 8.17.1  # Specify your desired Kibana version
+  count: 1  # Single instance
+  elasticsearchRef:
+    name: quickstart-es
+  http:
+    service:
+      spec:
+        type: NodePort  # Use LoadBalancer if preferred
